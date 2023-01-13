@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.css">
+    <script src="/node_modules/bootstrap/dist/js/bootstrap.js"></script>
+    <title>Document</title>
+</head>
+<body class='body'>
+    <div class="container"><br><br>
+        <div class="row p-5 "style="background-image: url('/assets/img/images1.jfif');background-repeat: no-repeat; background-size: cover;background-color: rgba(0, 0, 0, 0.3); background-blend-mode: color-burn;">
+            <div class="col-lg-4 col-md-12 col-sm-12 mx-auto">
+                <div class="shadow mx-auto p-2">
+                    <!-- <div class="col-lg-7 col-md-6 col-sm-block p-5">
+                        
+                    </div> -->
+                    <!-- <div class="col-lg-5 col-md-6 col-sm-8" > -->
+                        <form (ngSubmit)="signIn()">
+                            <h1 class="text-center text-white fw-bold"id="welcome">WELCOME BACK</h1>
+                            <h2 class="text-center text-white">Login to your account</h2>
+                            <input type="email"id="inp" placeholder="Email" class="form-control mb-5" name="email" [(ngModel)]="email">
+                            <input type="password"id="inp" placeholder="Password" class="form-control mb-5" name="password" [(ngModel)]="password">
+                            <b style="cursor: pointer;color: rgb(255, 128, 0);">{{incorrect}}</b>
+                            <button class="btn border border-none form-control style mb-3">SignIn</button>
+                            <p routerLink="/signup" class="text-center">Don't Have an account yet  <b style="cursor: pointer;color: rgb(255, 128, 0);">Signup</b></p>
+                        </form>
+                    <!-- </div> -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    
+</body>
+</html>

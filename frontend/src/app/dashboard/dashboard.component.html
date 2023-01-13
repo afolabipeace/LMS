@@ -1,0 +1,16 @@
+<div class="container p-5 m-5">
+  <div class="row">
+    <div class="col-lg-7 mx-auto d-block">
+      <div class="shadow col-6"id='name'><br><br>
+        <b class='p-3 h4'><b style="font-size: 20px;">WELCOME</b>&nbsp;&nbsp;{{name}}&nbsp;{{names}}</b>
+      </div>
+      <div class="shadow mx-auto col-5"id='course'><br><br>
+        <b style="cursor:pointer;" class="h3"routerLink='/home'>My Courses</b><br><br>
+       <div *ngFor="let course of courses">
+        <div class="h5">Title:{{course.title}}</div>
+        <div class="h5">Description:{{course.desc}}</div><br>
+       </div>
+      </div>
+    </div>
+  </div>
+</div>

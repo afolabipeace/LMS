@@ -1,0 +1,98 @@
+<nav class="navbar navbar-expand-lg avbar-light bg-light">
+  <div class="container-fluid"style='position:fixed'>
+    <a class="navbar-brand fw-bold" href="#">LMS</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="d-flex" id="navbarSupportedContent">
+      <div id="circle"class='fw-bold text-center'>{{name}}</div>
+        <b class='p-3'style="font-size: 20px;">{{name}}&nbsp;{{names}}</b>
+    </div>
+  </div>
+</nav>
+
+<mat-sidenav-container class="sidenav-container bg-white">
+    <mat-sidenav #drawer class="sidenav" fixedInViewport
+         style="background-color: rgba(4,4,44, 1);">
+      <mat-toolbar class="text-dark">LMS</mat-toolbar>
+      <mat-nav-list class="text-white">
+        <a mat-list-item routerLink="/dashboard" (click)="width < 768 ? drawer.close() : ''" routerLinkActive="active" class="pl-4 myFont">
+          <span class="pr-1"><i class="fas fa-tachometer-alt"></i></span>
+          <span class="ml-3 text-white">Dashboard</span></a>
+        <a mat-list-item routerLink="/mycourse" (click)="width < 768 ? drawer.close() : ''" routerLinkActive="active" class="pl-4 myFont">
+          <span><i class="fas fa-user"></i></span>
+          <span class="ml-4 text-white">Mycourses</span>
+        </a>
+        <a mat-list-item routerLink="/allcourse" routerLinkActive="active" class="pl-4 myFont">
+          <span><i class="fas fa-map-marker-alt"></i></span>
+          <span class="ml-4 text-white">AllCourses</span>
+        </a>
+        <a mat-list-item routerLink="/alluser" routerLinkActive="active" class="pl-4 myFont">
+          <span><i class="fas fa-users"></i></span>
+          <span class="ml-3 text-white"></span>
+        </a>
+  
+        <a mat-list-item routerLink="/addtransport" routerLinkActive="active" class="pl-4 myFont">
+          <span><i class="fas fa-car-side"></i></span>
+          <span class="pl-3 text-white"></span>
+        </a>
+        
+        <a mat-list-item routerLink="/count" (click)="width < 768 ? drawer.close() : ''" routerLinkActive="active" class="pl-4 myFont">
+          <span><i class="fas fa-plus-circle"></i></span>
+          <span class="pl-3 text-white"></span>
+        </a>
+        <a mat-list-item routerLink="/report" (click)="width < 768 ? drawer.close() : ''" routerLinkActive="active" class="pl-4 myFont">
+          <span><i class="fas fa-chart-bar"></i></span>
+          <span class="pl-3 text-white"></span>
+        </a>
+        <a mat-list-item routerLink="/signin" (click)="width < 768 ? drawer.close() : ''" routerLinkActive="active" class="pl-4 myFont">
+          <span><i class="fas fa-sign-out-alt"></i></span>
+          <span class="pl-3 text-white">Log Out</span>
+        </a>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="" style="height: 100%; max-height: 100%; overflow-y: auto;">
+      <mat-toolbar class="bg-light shadow-sm" style="width: 100% !important; position: fixed; z-index: 1000;">
+        <div class="row w-100">
+          <div class="col-6">
+            <button 
+              type="button"
+              aria-label="Toggle sidenav"
+              mat-icon-button
+              (click)="drawer.toggle()"
+              *ngIf="isHandset$">
+              <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+          <!-- <button
+            type="button"
+            aria-label="Toggle sidenav"
+            mat-icon-button
+            (click)="drawer.toggle()"
+            *ngIf="isHandset$ | async">
+            <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+          </button>
+          <span>traffic-counter</span> -->
+          <!-- <span>traffic-counter</span> -->
+          </div>
+          <div class="col-6">
+            <nav class="nav mynav">
+              <!-- <a>Home</a> -->
+              <a class="nav-link text-dark d-none d-md-block myhover" routerLink="/count" title="count"><i class="fas fa-plus-circle"></i></a>
+              <!-- <a href="#" id="drop"  class="nav-link text-dark d-none d-md-block ml-lg-3 myhover" data-toggle="dropdown" title="settings" *ngIf="admin"><i class="fas fa-cog"></i></a>
+              <div class="dropdown-menu" id="drop">
+                <a routerLink="/dashboard" class="nav-link h6 initialism dropdown-item myhover">Keep Report by Minutes</a>
+                <a routerLink="/dashboard" class="nav-link h6 initialism dropdown-item myhover">Keep Report by Hour</a>
+                <a routerLink="/dashboard" class="nav-link h6 initialism dropdown-item myhover">Keep Report by Seconds</a>
+              </div> -->
+              <!-- <a routerLink="/profile" class="nav-link ml-lg-3 text-dark d-none d-md-block myhover" title="profile" (click)="getFirstName()"><i class="fas fa-user"></i></a> -->
+              <!-- <img src="{{image}}" routerLink="/profile" (click)="getFirstName()" onerror="this.src='assets/profilepicture.png'" alt="" class="rounded-circle mt-1 ml-4 prfPic"> -->
+            </nav>
+          </div>
+        </div>
+      </mat-toolbar>
+      <!-- Add Content Here -->
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+  
+  

@@ -1,0 +1,32 @@
+#inp{
+    border-radius: 0;
+    border: 0;
+    box-shadow:6px 4px 6px #a6a5a5;
+    height: 8vh;
+}
+#welcome{
+    font-size: 40px;
+    text-align: justify;
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+.btn{
+    background-color: rgb(255, 128, 0);
+    border-radius: 0;
+    height: 8vh;
+    color:white;
+    box-shadow:6px 4px 6px #a6a5a5;
+}
+.btn:hover{
+    background-color: orange;
+}
+#div{
+    /* style="background-image: url('/assets/img/IMG_2048.jpg');background-repeat: no-repeat; background-size: cover;background-color: rgba(0, 0, 0, 0.3); background-blend-mode: color-burn;" */
+    /* background-image: url('/assets/img/bacground.avif'); */
+    /* background-image: url('/assets/img/IMG_2048.jpg'); */
+    /* background-image: url('../'); */
+    background-repeat: no-repeat; 
+    background-size: cover;
+    background-color: rgba(0, 0, 0, 0.3); 
+    background-blend-mode: color-burn;
+
+}

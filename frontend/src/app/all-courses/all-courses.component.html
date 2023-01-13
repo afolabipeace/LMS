@@ -1,0 +1,29 @@
+<!-- <div class="container p-5"><br>
+    <button class="btn btn-primary mb-3" color="primary" routerLink="/mycourse">Create My Courses</button>
+<div class='' >
+    <div class='px-5 text-center info'*ngIf="courseArray.length != 0">
+        <div class='card col-lg-4' *ngFor=" let item of courseArray">
+           <div class='d-flex'>
+            <video [src]="path+item.file" controls></video>
+            <div class='h6 text-dark fw-bold'>Name: {{item.first_name}} {{item.last_name}}</div>
+            <div class='h6 text-dark fw-bold'>Title: {{item.title}}</div>
+            <div class='h6 text-dark fw-bold'>Description: {{item.desc}}</div>
+           </div>
+        </div>
+    </div>
+</div>
+</div> -->
+<button class="btn btn-primary mb-3" color="primary" routerLink="/mycourse">Create My Courses</button>
+<div class='col-lg-3 col-md-5 col-sm-7 m-5' *ngFor="let item of courseArray">
+    <div class=' '>
+        <div class='px-5 text-center info '>
+            <!-- <div class='h5 text-dark'>Name: `{$all['name']}`</div> -->
+            <div class='card'>
+                <video [src]="path+item.file" controls></video>
+                <div class='h6 text-dark fw-bold'>Name: {{item.first_name}} {{item.last_name}}</div>
+                <div class='h6 text-dark fw-bold'>Title: {{item.title}}</div>
+                <div class='h6 text-dark fw-bold'>Description: {{item.desc}}</div>
+            </div>
+        </div>
+    </div>
+</div>

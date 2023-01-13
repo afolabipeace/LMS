@@ -1,0 +1,12 @@
+#course{
+  transform: translate(30vh,-10vh);
+  padding: 8px;
+}
+#cour{
+  transform: translate(90vh,-10vh);
+}
+#name{
+  background-color: rgb(255, 128, 0);
+  border-radius: 10px;
+  color: white;
+}
