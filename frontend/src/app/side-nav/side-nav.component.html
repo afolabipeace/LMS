@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg avbar-light bg-light">
+<!-- <nav class="navbar navbar-expand-lg avbar-light bg-light">
   <div class="container-fluid"style='position:fixed'>
     <a class="navbar-brand fw-bold" href="#">LMS</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -9,11 +9,13 @@
         <b class='p-3'style="font-size: 20px;">{{name}}&nbsp;{{names}}</b>
     </div>
   </div>
-</nav>
+</nav> -->
 
 <mat-sidenav-container class="sidenav-container bg-white">
+  <div id="circle"class='fw-bold text-center'>{{name}}</div>
+        <b class='p-3'style="font-size: 20px;">{{name}}&nbsp;{{names}}</b>
     <mat-sidenav #drawer class="sidenav" fixedInViewport
-         style="background-color: rgba(4,4,44, 1);">
+         style=" background-color: rgb(255, 128, 0);">
       <mat-toolbar class="text-dark">LMS</mat-toolbar>
       <mat-nav-list class="text-white">
         <a mat-list-item routerLink="/dashboard" (click)="width < 768 ? drawer.close() : ''" routerLinkActive="active" class="pl-4 myFont">
@@ -21,11 +23,11 @@
           <span class="ml-3 text-white">Dashboard</span></a>
         <a mat-list-item routerLink="/mycourse" (click)="width < 768 ? drawer.close() : ''" routerLinkActive="active" class="pl-4 myFont">
           <span><i class="fas fa-user"></i></span>
-          <span class="ml-4 text-white">Mycourses</span>
+          <span class="ml-4 text-white">My courses</span>
         </a>
         <a mat-list-item routerLink="/allcourse" routerLinkActive="active" class="pl-4 myFont">
           <span><i class="fas fa-map-marker-alt"></i></span>
-          <span class="ml-4 text-white">AllCourses</span>
+          <span class="ml-4 text-white">All Courses</span>
         </a>
         <a mat-list-item routerLink="/alluser" routerLinkActive="active" class="pl-4 myFont">
           <span><i class="fas fa-users"></i></span>

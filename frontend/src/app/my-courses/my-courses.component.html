@@ -1,20 +1,19 @@
-<div class="container-fluid bg-light" >
+<div class="container-fluid m-5 p-5" >
     <div class="row">
-        <div class="col-sm-6 col-lg-4 col-md-6 p-1 mt-5 mb-5 mb-md-0 p-md-5"><br>
-            <div class="bg-white mx-auto shadow-sm">
-                <p class="display-4 text-center "style='color: rgb(255, 128, 0);'>LMS</p>
+        <h2 class="fw-bold text-center"style='color: rgb(255, 128, 0);'>My Courses</h2>
+        <div class="col-lg-4 mx-auto"><br>
+            <div class=" mx-auto shadow"id='shadow'>
+                <!-- <p class="display-4 text-center "style='color: rgb(255, 128, 0);'>LMS</p> -->
                 <p class="h2 text-center"style='color: rgb(255, 128, 0);'>Create Your Courses</p>
-                <form class="form-group p-5 p-md-5"[formGroup]="userForm" (ngSubmit)="create()"enctype='multipart/form-data'>
-                    <input class='mb-3' placeholder="Title" type="text" id="inp" name="title" formControlName="title">
-                    <input class='mb-3' placeholder="Description" type="text" id="inp" name="desc" formControlName="desc">
-                    <input (change)="onFileChange($event)" class='mb-3' type="file" id="inp" name="file" formControlName="file">
+                <form class="form-group p-3"[formGroup]="userForm" (ngSubmit)="create()"enctype='multipart/form-data'>
+                    <input class='mb-3 form-control' placeholder="Title" type="text" id="inp" name="title" formControlName="title">
+                    <input class='mb-3 form-control'placeholder="Description" type="text" id="inp" name="desc" formControlName="desc">
+                    <input (change)="onFileChange($event)" class='mb-3 form-control' type="file" id="inp" name="file" formControlName="file">
                     <!-- <p class="text-danger text-center">{{incorrect}}</p> -->
                     <br>
                     {{incorrect}}
-                    <div class="row mx-auto justify-content-center">
-                        <button class="btn mb-2" id="btn">Create</button>
+                        <button class="btn mx-3" id="btn">Create</button>
                         <button class="btn"id="btn" routerLink="/home">Check My Courses</button>
-                    </div>
                 </form>
             </div>
         </div>
