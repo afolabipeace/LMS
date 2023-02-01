@@ -20,6 +20,7 @@ export class UserService {
   logout = () => {
     localStorage.removeItem("token")
     this.router.navigate(['/signin'])
+    localStorage.removeItem("token")
   }
 
   public signupUsers (userObj:any){

@@ -1,23 +1,10 @@
-<div class="container p-5"><br>
-    <button class="btn btn-primary mb-3" color="primary" routerLink="/mycourse">Create My Courses</button>
-<div class='' *ngFor="let course of courses">
-    <div class='px-5 text-center info'>
-        <!-- <div class='h5 text-dark'>Name: `{$all['name']}`</div> -->
-        <div class='card'>
-            <video [src]="path+course.file" controls></video>
-            <div class='h6 text-dark fw-bold'>Title: {{course.title}}</div>
-            <div class='h6 text-dark fw-bold'>Description: {{course.desc}}</div>
-        </div>
+<div class="row mt-5 p-3"><br>
+    <div class='card d-flex m-3 p-3' style="width: 15rem;" *ngFor="let course of courses">
+        <video [src]="path+course.file" controls></video>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item fw-bold h5">Title: {{course.title}}</li>
+            <li class="list-group-item fw-bold h5">Description: {{course.desc}}</li>
+        </ul>
+
     </div>
 </div>
-</div>
-
-
-<!-- <div class='h6  text-dark'>Quantity: {$all['quantity']}</div>
-            <div class='h6 text-dark'>Category-Name: {$all['cat_name']}</div> -->
-<!-- <form method='post' action='addToCart.php'>
-                <input type='hidden' name='index' value='{$all[' product_id']}'>
-                <input type='hidden' name='index2' value='{$userDetails[' user_id']}'>
-                <button class='btn btn-success m-2' type='submit' name='addToCart' value='addToCart'>Add to
-                    Cart</button>
-            </form> -->

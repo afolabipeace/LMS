@@ -1,15 +1,20 @@
 <div class="container p-5 m-5">
   <div class="row">
     <div class="col-lg-7 mx-auto d-block">
-      <div class="shadow col-6"id='name'><br><br>
-        <b class='p-3 h4'><b style="font-size: 20px;">WELCOME</b>&nbsp;&nbsp;{{name}}&nbsp;{{names}}</b>
+      <div class="" id='name'><br><br>
+        <div class='card d-flex m-3 p-3'>
+          <b class='p-3 h4 text-dark'><b style="font-size: 20px;">WELCOME</b>&nbsp;&nbsp;{{name}}&nbsp;{{names}}</b>
+        </div>
       </div>
-      <div class="shadow mx-auto col-5"id='course'><br><br>
-        <b style="cursor:pointer;" class="h3"routerLink='/home'>My Courses</b><br><br>
-       <div *ngFor="let course of courses">
-        <div class="h5">Title:{{course.title}}</div>
-        <div class="h5">Description:{{course.desc}}</div><br>
-       </div>
+
+      <div class="row mt-5 p-3"><br>
+        <b style="cursor:pointer;" class="h3" routerLink='/home'>My Courses</b><br><br>
+        <div class='card d-flex m-3 p-3' style="width: 15rem;" *ngFor="let course of courses">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item fw-bold h5">Title: {{course.title}}</li>
+            <li class="list-group-item fw-bold h5">Description: {{course.desc}}</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

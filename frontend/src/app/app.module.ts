@@ -20,6 +20,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MyCoursesComponent } from './my-courses/my-courses.component';
+import { LogoutComponent } from './logout/logout.component';
+import { BottomsheetComponent } from './bottomsheet/bottomsheet.component';
 import { AllCoursesComponent } from './all-courses/all-courses.component';
 import { SnackBarComponent } from './snack-bar/snack-bar.component';
 import { MaterialModule } from './material.module'
@@ -35,6 +37,8 @@ import { MaterialModule } from './material.module'
     MyCoursesComponent,
     AllCoursesComponent,
     SnackBarComponent,
+    LogoutComponent,
+    BottomsheetComponent,
   ],
   imports: [
     BrowserModule,
