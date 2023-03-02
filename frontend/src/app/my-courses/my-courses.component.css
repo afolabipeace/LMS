@@ -8,7 +8,7 @@
 #inp{
     border-radius: 0;
     border: 0;
-    box-shadow:4px 3px 3px rgb(255, 128, 0);
+    /* box-shadow:4px 3px 3px rgb(255, 128, 0); */
     height: 8vh;
 }
 #btn{

@@ -6,8 +6,12 @@
                 <!-- <p class="display-4 text-center "style='color: rgb(255, 128, 0);'>LMS</p> -->
                 <p class="h2 text-center"style='color: rgb(255, 128, 0);'>Create Your Courses</p>
                 <form class="form-group p-3"[formGroup]="userForm" (ngSubmit)="create()"enctype='multipart/form-data'>
-                    <input class='mb-3 form-control' placeholder="Title" type="text" id="inp" name="title" formControlName="title">
-                    <input class='mb-3 form-control'placeholder="Description" type="text" id="inp" name="desc" formControlName="desc">
+                    <input placeholder="Title"type="text" name="title"id='inp' formControlName="title" class='w-full rounded p-1 my-2 border outline-none' />
+                    <input placeholder="Description" type="text" id='inp' name="desc" formControlName="desc" class='w-full rounded p-1 my-2 border outline-none' />
+
+
+                    <!-- <input class='mb-3 form-control' placeholder="Title" type="text" id="inp" name="title" formControlName="title">
+                    <input class='mb-3 form-control'placeholder="Description" type="text" id="inp" name="desc" formControlName="desc"> -->
                     <input (change)="onFileChange($event)" class='mb-3 form-control' type="file" id="inp" name="file" formControlName="file">
                     <!-- <p class="text-danger text-center">{{incorrect}}</p> -->
                     <br>
