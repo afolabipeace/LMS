@@ -1,6 +1,8 @@
 <?php
     header("Access-Control-Allow-Origin: *");
-    header("Access-Control-Allow-Headers: Content-Type, authorization");
+    header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+    header("Access-Control-Allow-Headers: Content-Disposition, Content-Length, AccepT-Encoding, X-Requested-With, Content-Type, Authorization");
+    header("Content-type: application/json; charset=UTF-8");
 
     class Config {
         protected $localhost = "localhost";

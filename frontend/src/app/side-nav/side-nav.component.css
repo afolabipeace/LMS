@@ -1,5 +1,5 @@
 #circle{
-    width: 21%;
+    width: 40%;
     height: 7vh;
     border-radius: 100%;
     background-color: rgb(10, 10, 92);
@@ -7,4 +7,12 @@
     text-align: center;
     padding: 5px;
     color: white;
+}
+.sidenav{
+    background-color: rgb(255, 128, 0);
+    /* width:20%; */
+    font-size:30px;
+}
+#side{
+    font-size: 20px;
 }

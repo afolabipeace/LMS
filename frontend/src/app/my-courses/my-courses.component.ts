@@ -10,44 +10,59 @@ import { SnackBarComponent } from '../snack-bar/snack-bar.component';
   templateUrl: './my-courses.component.html',
   styleUrls: ['./my-courses.component.css']
 })
+// interface Food {
+//   value: string;
+//   viewValue: string;
+// }
 export class MyCoursesComponent implements OnInit {
 
   constructor(public userService:UserService, public formBuilder:FormBuilder,public snackbar:MatSnackBar, public router: Router) { }
   public userForm = this.formBuilder.group({
     title: [''],
     desc: [''],
-    file: [''],
+    status: [''],
+    amount: [''],
 })
   public studentArray = [];
   public incorrect= "";
+  
+  // public courseStatus= "";
   coursefile=null;
   // public file = '';
 
+  // foods: Food[] = [
+  //   {value: 'steak-0', viewValue: 'Steak'},
+  //   {value: 'pizza-1', viewValue: 'Pizza'},
+  //   {value: 'tacos-2', viewValue: 'Tacos'},
+  // ];
   ngOnInit(): void {
   }
   onFileChange(e:any){
     this.coursefile=e.target.files[0];
-
+    // console.log(this.status)
   }
   create(){
-    let {title, desc, file} = this.userForm.value;
-    if (title == "" && file == ""&&file== "" ) {
+    let {title, desc, status,amount} = this.userForm.value;
+    if (title == "" && desc == "" && status == "" && amount == "") {
       this.incorrect = "Pls provide the neccessary details!!!."
     }else{
     const form = new FormData();
     form.append("title", title ?? "");
-    form.append("desc", desc??"");
-    form.append("file", this.coursefile??"");
-    this.userService.userCourses(form).subscribe(response => { 
+    form.append("desc", desc ?? "");
+    form.append("status", status ?? "");
+    form.append("amount", amount ?? "");
+    this.userService.createCourses(form).subscribe(response => { 
       console.log(response);
       if (response.success == true) {
         this.snackbar.openFromComponent(SnackBarComponent, {
           data: {message: "Course sucessfully Created"},
           duration: 3000
         })
+          console.log(status)
         this.userForm.controls['title'].setValue("");
         this.userForm.controls['desc'].setValue("");
-        this.userForm.controls['file'].setValue("");
+        this.userForm.controls['status'].setValue("");
+        this.userForm.controls['amount'].setValue("");
         this.router.navigate(['/home']);
       } else {
         this.snackbar.openFromComponent(SnackBarComponent, {
@@ -81,4 +96,5 @@ export class MyCoursesComponent implements OnInit {
         
     //   }
     // })
-  }
+
+}

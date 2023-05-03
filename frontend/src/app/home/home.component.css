@@ -1,0 +1,18 @@
+#btn{
+    background-color: rgb(255, 128, 0);
+    color:white;
+}
+#btns{
+    background-color: rgb(255, 128, 0);
+    color:white;
+    border-radius: 110%;
+}
+#icon{
+    width:60%;
+    height:5vh;
+    background-color: white;
+}
+#extra-btn{
+    border: 0;
+    background-color: white;
+}

@@ -1,56 +1,32 @@
-<div class="container-fluid m-5 p-5" >
+<div class="container-fluid m-5 p-5">
     <div class="row">
-        <h2 class="fw-bold text-center"style='color: rgb(255, 128, 0);'>My Courses</h2>
+        <!-- <h2 class="fw-bold text-center" style='color: rgb(255, 128, 0);'>My Courses</h2> -->
+        <p class="h2 text-center" style='color: rgb(255, 128, 0);'>Create Courses</p>
         <div class="col-lg-4 col-md-6 col-sm-8 mx-auto"><br>
-            <div class=" mx-auto shadow"id='shadow'>
+            <div class=" mx-auto shadow" id='shadow'>
                 <!-- <p class="display-4 text-center "style='color: rgb(255, 128, 0);'>LMS</p> -->
-                <p class="h2 text-center"style='color: rgb(255, 128, 0);'>Create Your Courses</p>
-                <form class="form-group p-3"[formGroup]="userForm" (ngSubmit)="create()"enctype='multipart/form-data'>
-                    <input placeholder="Title"type="text" name="title"id='inp' formControlName="title" class='w-full rounded p-1 my-2 border outline-none' />
-                    <input placeholder="Description" type="text" id='inp' name="desc" formControlName="desc" class='w-full rounded p-1 my-2 border outline-none' />
+                <form class="form-group p-3" [formGroup]="userForm" (ngSubmit)="create()" enctype='multipart/form-data'>
+                    <input placeholder="Title" type="text" name="title" id='inp' formControlName="title"
+                        class='w-full rounded p-1 my-2 border outline-none form-control'><br>
 
+                    <input placeholder="Description" type="text" id='inp' name="desc" formControlName="desc"
+                        class='w-full rounded p-1 my-2 border outline-none form-control'><br>
 
-                    <!-- <input class='mb-3 form-control' placeholder="Title" type="text" id="inp" name="title" formControlName="title">
-                    <input class='mb-3 form-control'placeholder="Description" type="text" id="inp" name="desc" formControlName="desc"> -->
-                    <input (change)="onFileChange($event)" class='mb-3 form-control' type="file" id="inp" name="file" formControlName="file">
-                    <!-- <p class="text-danger text-center">{{incorrect}}</p> -->
+                    <mat-form-field appearance="fill" class="w-100">
+                        <mat-label>Course Status</mat-label>
+                        <mat-select name="status" formControlName="status">
+                            <mat-option value="free">Free</mat-option>
+                            <mat-option value="paid">Paid</mat-option>
+                        </mat-select>
+                    </mat-form-field>
+
+                    <input placeholder="Amount if The Course is Paid" type="text" id='inp' name="amount" formControlName="amount" class='w-full rounded p-1 my-2 border outline-none form-control' ><br>
                     <br>
                     {{incorrect}}
-                        <button class="btn mx-3" id="btn">Create</button>
-                        <button class="btn"id="btn" routerLink="/home">Check My Courses</button>
+                    <button class="btn mx-3" id="btn">Create</button>
+                    <button class="btn" id="btn" routerLink="/resources">View Courses</button>
                 </form>
             </div>
         </div>
     </div>
 </div>
-
-
-
-   <!-- <form [formGroup]="userForm" (ngSubmit)="create()">
-    <mat-form-field appearance="legacy" class="w-100">
-        <mat-label>Title</mat-label>
-        <input type="text" name="title" matInput placeholder="Title" formControlName="title">
-    </mat-form-field>
-    <mat-form-field appearance="legacy" class="w-100">
-        <mat-label>Title</mat-label>
-        <input type="text" name="title" matInput placeholder="Title" formControlName="title">
-    </mat-form-field>
-    <mat-form-field appearance="legacy" class="w-100">
-        <mat-label>Description</mat-label>
-        <input type="desc"name="desc"matInputplaceholder="Description"formControlName="desc">
-    </mat-form-field>
-    <mat-form-field appearance="legacy" class="w-100">
-        <mat-label>Resources</mat-label>
-        <input type="file" name="file" matInput placeholder="Description">
-    </mat-form-field>
-    <input type="file" name="file" [(ngModel)]="file">
-    <div class="mx-auto justify-content-center mb-3">
-        <button mat-raised-button color="primary" >Create</button>
-    </div>
-   </form> -->
-
-   <!-- <form [formGroup]="userForm" (ngSubmit)="create()">
-    <input type="text" name="title" formControlName="title" placeholder="Title">
-    <input type="text" name="desc" formControlName="desc" placeholder="Description">
-    <button class="btn btn-primary">create</button>
-    </form> -->

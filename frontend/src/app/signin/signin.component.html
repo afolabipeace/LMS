@@ -27,6 +27,7 @@
                             <button class="btn border border-none form-control style mb-3">SignIn</button>
                             <p routerLink="/signup" class="text-center">Don't have an account yet  <b style="cursor: pointer;color: rgb(255, 128, 0);">Signup</b></p>
                         </form>
+                        <mat-progress-bar mode="indeterminate" style="height: 1vh;" *ngIf="progressBar"></mat-progress-bar>
                     </div>
                 </div>
 

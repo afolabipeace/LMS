@@ -1,0 +1,31 @@
+<div class="row mt-5 p-3"><br>
+    <button class="btn" id="btn" routerLink="/resources"> Check Courses</button>
+    <button class="btn" id="btn" routerLink="/allcourse"> Check All Courses</button>
+
+    <div class="shadow mx-auto col-4 d-flex" >
+        <h3 class="display-4  text-center"routerLink="/resources">{{message}}
+        </h3>
+    </div>
+    <div *ngIf="resources.length != 0">
+        <div class='card d-flex m-3 p-3' style="width: 15rem;" *ngFor="let res of resources; let id = index ;">
+            <li class="list-group-item fw-bold h3"> {{res.title}}</li>
+
+            <span>
+                <span *ngIf="res.type == 'video'">
+                    <video [src]="path+res.file" controls></video>
+                </span>
+                <span *ngIf="res.type == 'image'">
+                    <img [src]="path+res.file" alt="">
+                </span>
+            </span>
+            
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item fw-bold h5">Type: {{res.type}}</li>
+                <li class="list-group-item fw-bold h5">Name: {{res.name}}</li>
+            </ul>
+            <!-- <button class="btn" id="btn" routerLink="resources/{{res.course_id}}">Add Resources</button> -->
+            <!-- <button routerLink="/home">View all Course</button> -->
+
+        </div>
+    </div>
+</div>

@@ -27,7 +27,20 @@ export class AllCoursesComponent implements OnInit {
   //   this.courses = data;
   //   this.seen = true;
   // })
+  //  this.getCourses();
   }
+  // getCourses() {
+  //     this.userService.userDetails.subscribe(data=>{
+  //       console.log(data.user_id)
+  //       this.userService.getCourses(data.user_id).subscribe(info => {
+  //         this.courses = info
+  //         console.log(this.courses)
+  //         console.log(this.courses.title)
+  //       })
+  //     console.log(data)
+  //     this.detailsOfUser = this.userService;
+  //     })
+  // }
 
 
   getAllCourses() {

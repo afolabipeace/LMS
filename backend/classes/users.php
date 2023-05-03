@@ -46,12 +46,6 @@
         //     return $this->read($query, $binder);
         // }
 
-        // public function signInUser ($email,$password){
-        //     $query = "SELECT * FROM users WHERE `email` = ? AND `password` = ?";
-        //     $binder = array('ss', $email,$password);
-        //     return $this->read($query, $binder);
-        // }
-
         public function get (){
             $allheaders = getallheaders();
             $jwtToken = $allheaders['authorization'];
@@ -72,6 +66,7 @@
             
         
         }
+
         public function getUser ($email){
             $query = "SELECT * from users WHERE `email`= ?";
             $binder = array('s', $email);
@@ -86,9 +81,16 @@
             return ($res);
         }
 
-        public function userCourses($title, $desc,$newName,$user_id){
-            $query = "INSERT INTO courses (title,`desc`,`file`,`user_id`) VALUES (?,?,?,?)";
-            $binder = array ('ssss', $title, $desc,$newName, $user_id);
+        public function createResources($type,$newName, $name,$course_id){
+                // "SELECT * FROM courses  || 
+            $query = "INSERT INTO resources (`type`,`file`,`name`, `course_id`) VALUES (?,?,?,?)";
+            $binder = array('ssss', $type,$newName,$name, $course_id);
+            return $this->create($query,$binder);
+        }
+        
+        public function createCourses($title, $desc,$status,$amount,$user_id){
+            $query ="INSERT INTO courses (title,`desc`, `status`,`amount`,`user_id`) VALUES (?,?,?,?,?)";
+            $binder = array ('sssss', $title, $desc, $status, $amount, $user_id);
             return $this->create($query,$binder);
         }
 
@@ -107,10 +109,27 @@
             // return ($res);
         }
 
+        public function getResources($course_id){
+            $query = "SELECT * FROM resources JOIN courses USING (course_id) WHERE course_id = ?";
+            $binder = array('s',$course_id);
+            return $this->read($query,$binder) ;
+        }
+
         public function getAllCourses(){
             $query = "SELECT * FROM courses JOIN users USING (user_id)";
             $binder = null;
             return $this->read($query,$binder);
+        }
+
+        // public function getCourseId(){
+        //     $query = "SELECT * FROM courses JOIN resources USING (course_id)";
+        //     $binder = null;
+        //     return $this->read($query,$binder);
+        // }
+
+        public function selectAll() {
+            $query = "SELECT * FROM courses";
+            return $this->readAll($query);
         }
     }
 ?>

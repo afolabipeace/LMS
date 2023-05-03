@@ -17,28 +17,32 @@ export class SigninComponent implements OnInit {
   public password = ''
   public usersArray:any = [];
   public incorrect ='';
-  public progressBar:any = true;
+  public progressBar:any = false;
+  
   ngOnInit(): void {
    
   }
 
   signIn (){
     if ((this.email == "" && this.password == "") || (this.email != "" && this.password == "") ) {
-      this.progressBar = false;
+      this.progressBar = true;
       this.incorrect = "Pls provide the neccessary details!!!."
     } else {
       let obj = {email: this.email, password: this.password};
       this.userService.signinUsers(obj).subscribe(data => {
+        this.progressBar = true;
         if(this.email!=data.email && this.password!=data.password){
           this.incorrect = "Check your details!!!."
         }
         else if (data.userDetails == true) {
-          this.progressBar = false;
+        this.progressBar = true;
+
           this.snackbar.openFromComponent(SnackBarComponent, {
             data: {message: "Signed In Sucessfully"},
             duration: 3000
           })
           localStorage.setItem('token',data.token);
+          // this.progressBar = false;
           console.log(data.token)
           // let obj = {
           //   email: data.details.email, 
