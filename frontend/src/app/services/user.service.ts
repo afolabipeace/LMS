@@ -52,21 +52,37 @@ export class UserService {
     return this.httpClient.post<any>(`${this.baseUrl}/getCourse.php`, {user_id})
   }
 
+  public getPaymentHistory (){
+    return this.httpClient.get<any>(`${this.baseUrl}/getPaymentHistory.php`)
+  }
+
+  public savePayment (form:any){
+    return this.httpClient.post<any>(`${this.baseUrl}/savePayment.php`,form)
+  }
+
   public getResources (course_id:any){
     return this.httpClient.post<any>(`${this.baseUrl}/getResources.php`, {course_id})
   }
 
-  public getCourse (){
-    return this.httpClient.get<any>(`${this.baseUrl}/getCourses.php`)
-  }
+  // public getCourse (){
+  //   return this.httpClient.get<any>(`${this.baseUrl}/getCourses.php`)
+  // }
 
   // public getCourse (){
   //   return this.httpClient.post<any>(`${this.baseUrl}/getCourses.php`);
   // }
 
-  public getAllCourses (user_id:any){
-    return this.httpClient.post<any>(`${this.baseUrl}/getAllCourses.php`,{user_id})
+  public getAllCourses (){
+    return this.httpClient.get<any>(`${this.baseUrl}/getAllCourses.php`)
   }
+
+  public getOwnerPaymentHistory (course_id:any){
+    return this.httpClient.post<any>(`${this.baseUrl}/getOwnerPaymentHistory.php`,{course_id})
+  }
+
+  // public OwnerPaymentHistory (course_id:any){
+  //   return this.httpClient.get<any>(`${this.baseUrl}/getOwnerPaymentHistory.php`)
+  // }
 
   
 }

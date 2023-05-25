@@ -1,34 +1,32 @@
 <div class="row mt-5 p-3"><br>
     <button class="btn" id="btn" routerLink="/createCourses">Add Courses</button>
-    <div class='card d-flex m-3 p-3' style="width: 15rem;" *ngFor="let course of courses let id = index ;">
-        <span class="position-absolute top-0 start-100 translate-middle p-2 border border-light rounded-circle"
-            id="btn">{{course.status}}
-        </span>
-        <!-- <video [src]="path+course.file" controls></video> -->
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item fw-bold h5">Title: {{course.title}}</li>
-            <li class="list-group-item fw-bold h5">Description: {{course.desc}}</li>
-        </ul>
-
-        <div class="d-flex">
-            <img src="/assets/img/pen-solid.svg" class="hover:'/addresources'" alt="" id="icon"routerLink="resources/{{course.course_id}}">
-
-            <!-- <img src="/assets/img/book-open-solid.svg" alt=""*ngIf="course.status == 'free'" id="icon" routerLink="getResources/{{course.course_id}}"> -->
-            <button *ngIf="course.status == 'free'" id='extra-btn'>
-                <img src="/assets/img/book-open-solid.svg" alt="" id="icon" routerLink="getResources/{{course.course_id}}">
-            </button>
-
-
-            <!-- <img src="/assets/img/book-open-solid.svg" alt=""id="icon"
-            routerLink="/payment"
-            > -->
-            <!-- <button >View -->
-            <button *ngIf="course.status == 'paid'"routerLink="/payment">
-                <angular4-paystack email={{course.email}}{{course.amount}} ref="reference"[channels]="['bank']"class='btn text-white'(onClose)="paymentCancel()"(callback)="paymentDone($event)"id='btn'>View</angular4-paystack>
-            </button>
+    <div class='d-flex card m-3 p-3 shadow' style="width: 15rem;" *ngFor="let course of courses let id = index ;">
+        <div>
+            <span class="position-absolute top-0 start-100 translate-middle p-1 border border-light rounded-circle"
+                id="btn">{{course.status}} {{course.amount}}
+            </span>
+            <!-- <video [src]="path+course.file" controls></video> -->
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item fw-bold h5">Title: {{course.title}}</li>
+                <li class="list-group-item fw-bold h5">Description: {{course.desc}}</li>
+                <li class="list-group-item fw-bold h5">Description: {{course.course_id}}</li>
+            </ul>
         </div>
 
-        <!-- <button routerLink="/home">View all Course</button> -->
 
+        <div class="d-flex mx-auto m-3">
+            <!-- <img src="/assets/img/pen-solid.svg" class="hover:'/addresources'" alt="" id="icon"
+                -->
+
+            <i class="material-icons mx-3" routerLink="resources/{{course.course_id}}" style='cursor:pointer'>add</i>
+
+            <i *ngIf="course.status == 'free'" class="large material-icons mx-3"  routerLink="getResources/{{course.course_id}}" style='cursor:pointer'>visibility</i>
+
+            <i *ngIf="course.status == 'paid'" class="large material-icons mx-3"  routerLink="getResources/{{course.course_id}}" style='cursor:pointer'>visibility</i>
+
+            <!-- <input type="text" placeholder="View Payment History" class="btn" name="course_id" [(ngModel)]="course_id"(click)="paymentHistory()"> -->
+            <button (click)="paymentHistory(course.course_id)"routerLink="payment/{{course.course_id}}">View Payment History</button>
+            <!-- <button >View Payment History</button> -->
+        </div>
     </div>
 </div>

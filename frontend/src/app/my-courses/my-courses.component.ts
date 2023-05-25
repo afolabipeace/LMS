@@ -26,20 +26,11 @@ export class MyCoursesComponent implements OnInit {
   public studentArray = [];
   public incorrect= "";
   
-  // public courseStatus= "";
   coursefile=null;
-  // public file = '';
-
-  // foods: Food[] = [
-  //   {value: 'steak-0', viewValue: 'Steak'},
-  //   {value: 'pizza-1', viewValue: 'Pizza'},
-  //   {value: 'tacos-2', viewValue: 'Tacos'},
-  // ];
   ngOnInit(): void {
   }
   onFileChange(e:any){
     this.coursefile=e.target.files[0];
-    // console.log(this.status)
   }
   create(){
     let {title, desc, status,amount} = this.userForm.value;

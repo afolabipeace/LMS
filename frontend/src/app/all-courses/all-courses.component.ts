@@ -8,68 +8,88 @@ import { environment } from 'src/environments/environment';
   styleUrls: ['./all-courses.component.css']
 })
 export class AllCoursesComponent implements OnInit {
+  reference = '';
+  public titles = ''
+  constructor(public userService: UserService) { }
+  public courseArray: any = [];
+  public courses = [];
+  public course = [];
+  public title = '';
+  public desc = '';
+  public amount = '';
+  public date = '';
+  public file = '';
+  public user_id = '';
+  public course_id = '';
+  public id: number = 0;
+  public seen = false;
+  public path = environment.fileUrl;
+  paymentInit() {
+    console.log('Payment initialized');
+  }
 
-  constructor(public userService:UserService) { }
-  public courseArray:any =[];
-  public courses =[];
-  public course =[];
-  public title ='';
-  public desc ='';
-  public file ='';
-  public id:number =0;
-  public seen =false;
-  public path=environment.fileUrl;
+  paymentDone(ref: any,course:any) {
+      this.titles = 'Payment successfull';
+      console.log(this.titles, this.reference);
+      const form = new FormData();
+    // form.append("user_id", this.user_id);
+    form.append("course_id", course.course_id);
+    form.append("amount", course.amount);
+    form.append("reference", course.reference);
+    console.log(course.amount)
+    const data = {
+      'course_id': course.course_id,
+      'amount': course.amount,
+      'reference': course.reference
+    }
+    console.log(data)
+    this.userService.savePayment(form).subscribe(data=>{
+      console.log(data)
+    })
+     
+  }
+
+  paymentCancel() {
+    this.titles = 'Payment Failed';
+    console.log('payment failed');
+  }
 
   ngOnInit(): void {
-    this.getAllCourses();
-  //   this.userService.getAllCourses().subscribe(data => {
-  //     console.log(data);
-  //   this.courses = data;
-  //   this.seen = true;
-  // })
-  //  this.getCourses();
-  }
-  // getCourses() {
-  //     this.userService.userDetails.subscribe(data=>{
-  //       console.log(data.user_id)
-  //       this.userService.getCourses(data.user_id).subscribe(info => {
-  //         this.courses = info
-  //         console.log(this.courses)
-  //         console.log(this.courses.title)
-  //       })
-  //     console.log(data)
-  //     this.detailsOfUser = this.userService;
-  //     })
-  // }
-
-
-  getAllCourses() {
-    this.userService.userDetails.subscribe(data=>{
-      // console.log(data.user_id)
-      this.userService.getAllCourses(data.user_id).subscribe(info => {
-        this.courseArray = info
-        console.log(this.courseArray)
+    this.reference = `ref-${ Math.floor(Math.random() * 19e10)}`;
+    console.log(this.reference)
+    // this.getAllCourses();
+    this.userService.getAllCourses().subscribe(info => {
+      this.courseArray = info;
+      console.log(this.courseArray)
+      this.courseArray.map((c:any)=>{
+        // generatingauniquereferencenumberforeachcourse
+        let d = new Date();
+        c['reference']=`${ Math.floor(Math.random() * 19e10)}-${d.getTime()}`
       })
-    console.log(data)
     })
 
+    this.userService.userDetails.subscribe(data => {
+      console.log(data.user_id)
+      this.user_id = data.user_id
+      console.log(this.user_id)
+      localStorage.setItem('current_user',JSON.stringify(this.user_id))
+      // gettingallcourses
+      console.log(data)
+    })
+  }
 
-    // this.userService.userDetails.subscribe(data=>{
-    //   this.id=data.user_id
-    //   this.userService.getAllCourses(data.user_id).subscribe(info => {
-    //     this.courseArray=info
-    //     this.courseArray.map((item:any,index:any)=>{
-    //       if(index===this.id){
-    //         item.title=this.title
-    //         item.desc=this.desc
-    //         item.file=this.file
-            
-    //       }
-    //       console.log(item.title)
-    //       console.log(item.desc)
-    //       console.log(item.file)
-    //     })
-    //   })
-    // })
-}
+
+  // getAllCourses() {
+  //   this.userService.userDetails.subscribe(data => {
+  //     console.log(data.user_id)
+  //     this.user_id = data.user_id
+  //     this.userService.getAllCourses(data.user_id).subscribe(info => {
+  //       this.courseArray = info
+  //       console.log(this.courseArray)
+  //     })
+  //     console.log(data)
+  //   })
+
+  // }
+ 
 }

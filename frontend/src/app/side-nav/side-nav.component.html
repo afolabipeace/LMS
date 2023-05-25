@@ -28,12 +28,17 @@
       </a>
 
       <a mat-list-item routerLink="/resources" routerLinkActive="active" class="pl-4 myFont">
-        <!-- <span><i class="fas fa-user"></i></span> -->
-        <span class=" text-white" style="font-size:25px;">View Courses</span>
+        <span><i class="fas fa-user"></i></span>
+        <span class=" text-white" style="font-size:25px;">My Courses</span>
+      </a>
+
+      <a mat-list-item routerLink="/paymentHistory" routerLinkActive="active" class="pl-4 myFont">
+        <span><i class="fas fa-user"></i></span>
+        <span class=" text-white" style="font-size:25px;">View Payment History</span>
       </a>
 
       <a mat-list-item routerLink="/allcourse" routerLinkActive="active" class="pl-4 myFont">
-        <!-- <span><i class="fas fa-map-marker-alt"></i></span> -->
+        <span><i class="fas fa-map-marker-alt"></i></span>
         <span class=" text-white" style="font-size:25px;">View All Courses</span>
       </a>
 
@@ -64,7 +69,8 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content class="" style="height: 100%; max-height: 100%; overflow-y: auto;">
-    <mat-toolbar class="bg-light shadow-sm" style="width: 100% !important; position: fixed; z-index: 1000;">
+    <mat-toolbar class="bg-primary shadow-sm" style="width: 100% !important; position: fixed; z-index: 1000;">
+      <p>{{names}}</p>
       <div class="row w-100">
         <div class="col-6">
           <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()"

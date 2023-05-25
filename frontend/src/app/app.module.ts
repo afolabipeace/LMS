@@ -1,7 +1,11 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { Angular4PaystackModule } from 'angular4-paystack';
+
+import { CloudinaryModule, CloudinaryConfiguration } from '@cloudinary/angular-5.x';
+// import { Cloudinary } from '@cloudinary-core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -32,6 +36,9 @@ import { ResourcesComponent } from './resources/resources.component';
 import { GetResourcesComponent } from './get-resources/get-resources.component';
 import { MatOptionModule } from '@angular/material/core';
 import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { OwnerPaymentHistoryComponent } from './owner-payment-history/owner-payment-history.component';
+import { PaymentHistoryComponent } from './payment-history/payment-history.component';
+import { NotFoundComponent } from './not-found/not-found.component';
 
 @NgModule({
   declarations: [
@@ -47,13 +54,19 @@ import { MatProgressBarModule } from '@angular/material/progress-bar'
     LogoutComponent,
     BottomsheetComponent,
     ResourcesComponent,
-    GetResourcesComponent
+    NotFoundComponent,
+    GetResourcesComponent,
+    OwnerPaymentHistoryComponent,
+    PaymentHistoryComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    PdfViewerModule,
     NgbModule,
     FormsModule,
+    // CloudinaryModule,
+    // CloudinaryConfiguration,
     ReactiveFormsModule,
     HttpClientModule,
     BrowserAnimationsModule,

@@ -17,6 +17,7 @@ export class GetResourcesComponent implements OnInit {
   public seen = false;
   public path = environment.fileUrl;
   ngOnInit(): void {
+    console.log(this.path)
     let id = this.actRoute.snapshot.params['id']
     this.course_id=(id)
     
@@ -33,7 +34,7 @@ export class GetResourcesComponent implements OnInit {
         this.resources = data
       }
       localStorage.setItem('data', JSON.stringify(this.resources));
-      console.log(this.resources,"resources")
+      console.log(this.resources)
 
       
       // if (data.message != 'no Resources Created') {

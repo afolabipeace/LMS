@@ -1,0 +1,28 @@
+<div class="container p-5">
+    <button class="btn p-3" routerLink="/resources">Back To Course</button>
+    <p class="text-center text-dark display-4 fw-bold">Payment Receipt</p>
+    <div class="">
+        <div class="" >
+            <h3 class="display-4  text-center" routerLink="/resources"style='cursor:pointer;'>{{message}}</h3>
+            <section *ngIf="history.length != 0" class='row'>
+                <div *ngFor="let his of history;" class="card col-sm-12 p-0 mx-2 col-md-4 mx-auto">
+                    <div id="updiv" class="w-100">
+                        <H1 class="text-light text-center "><b>{{his.last_name}}</b> Made Payment Of</H1>
+                    </div>
+                    <div id="downdiv" class="p-2">
+                        <p class="ps-2 "><b>Amount Paid</b>: {{his.amount}}</p>
+                        <p class="ps-2 "><b>User Email</b>: {{his.email}}</p>
+                        <p class="ps-2 "><b>Date Of Payment</b>: {{his.date}}</p>
+                        <p class="ps-2 "><b>Reference Num.</b>:{{his.reference}}</p>
+                    </div>
+                </div>
+
+            </section>
+            <!-- <h3 class="text-dark text-center "id='details'><p class="fw-bold">Name:</p><p >{{his.first_name}} {{his.last_name}}</p></h3>
+                    <h3 class="text-dark text-center "id='details'><p class="fw-bold">Amount:</p><p >{{his.amount}}</p></h3>
+                    <h3 class="text-dark text-center"id='details'><p class="fw-bold">Reference_Number:</p><p >{{his.reference}}</p></h3>
+                    <h3 class="text-dark text-center "id='details'><p class="fw-bold">Date:</p><p >{{his.date}}</p></h3>
+                    <h3 class="text-dark text-center "id='details'><p class="fw-bold">Title:</p><p >{{his.title}}</p></h3> -->
+        </div>
+    </div>
+</div>
