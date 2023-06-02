@@ -54,7 +54,7 @@ export class MyCoursesComponent implements OnInit {
         this.userForm.controls['desc'].setValue("");
         this.userForm.controls['status'].setValue("");
         this.userForm.controls['amount'].setValue("");
-        this.router.navigate(['/home']);
+        this.router.navigate(['/resources']);
       } else {
         this.snackbar.openFromComponent(SnackBarComponent, {
           data: {message: "Unable to create course"},

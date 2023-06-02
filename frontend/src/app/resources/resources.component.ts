@@ -5,7 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { UserService } from '../services/user.service';
 import { SnackBarComponent } from '../snack-bar/snack-bar.component';
 import { Cloudinary } from '@cloudinary/angular-5.x';
-import * as cloudinary from 'cloudinary-core';
+// import * as cloudinary from 'cloudinary-core';
 
 @Component({
   selector: 'app-resources',
@@ -14,7 +14,7 @@ import * as cloudinary from 'cloudinary-core';
 })
 export class ResourcesComponent implements OnInit {
 
-  constructor(public userService: UserService, public cloudinary: Cloudinary, public formBuilder: FormBuilder, public snackbar: MatSnackBar, public router: Router, public actRoute: ActivatedRoute) { }
+  constructor(public userService: UserService, public formBuilder: FormBuilder, public snackbar: MatSnackBar, public router: Router, public actRoute: ActivatedRoute) { }
   //   public userForm = this.formBuilder.group({
   //     type: [''],
   //     name: [''],
@@ -31,6 +31,7 @@ export class ResourcesComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.actRoute.snapshot.params['id']
+    console.log(id)
     this.userService.userDetails.subscribe(data => {
       this.studentArray = data;
       this.userService.getCourses(data.user_id).subscribe(info => {
@@ -45,7 +46,7 @@ export class ResourcesComponent implements OnInit {
     this.file = event.target.files[0];
   }
 
-  createResources(event: Event) {
+  createResources(){
     // alert('nuinbib')
     console.log(this.file);
     console.log(this.name);
@@ -64,16 +65,18 @@ export class ResourcesComponent implements OnInit {
       this.uploadFile.append('name', this.name);
       this.uploadFile.append('type', this.type);
       this.uploadFile.append('course_id', this.course_id);
-      const cl = cloudinary.Cloudinary.new({ cloud_name: 'your_cloud_name' });
+      // const cl = cloudinary.Cloudinary.new({ cloud_name: 'your_cloud_name' });
       this.userService.createResources(this.uploadFile).subscribe(data => {
-        cl.upload(this.uploadFile, (error, result) => {
-          if (error) {
-            console.log('Upload error:', error);
-          } else {
-            console.log('Upload result:', result);
-            // Here you can handle the Cloudinary response and perform any necessary actions
-          }
-        });
+
+        // cl.upload(this.uploadFile, (error, result) => {
+        //   if (error) {
+        //     console.log('Upload error:', error);
+        //   } else {
+        //     console.log('Upload result:', result);
+        //     // Here you can handle the Cloudinary response and perform any necessary actions
+        //   }
+        // });
+        
         console.log('entered')
         console.log(data);
         if (data.success == true) {

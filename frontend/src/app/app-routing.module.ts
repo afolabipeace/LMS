@@ -31,19 +31,17 @@ const routes: Routes = [
         path: 'resources', children: [
           { path: '', component: HomeComponent },
           { path: 'resources/:id', component: ResourcesComponent },
-          { path: 'getResources/:id', component: GetResourcesComponent },
+          { path: 'getResources/:id', component: GetResourcesComponent,canActivate:[ResourcesGuard] },
           { path: 'payment/:id', component: OwnerPaymentHistoryComponent },
         ]
       },
-      {
-        path: 'allcourse', children: [
+      {path: 'allcourse', children: [
           { path: '', component: AllCoursesComponent },
-          { path: 'getResources/:id', component: GetResourcesComponent, canActivate: [ResourcesGuard] },
-        ]
-      },
+          { path: 'getResources/:id', component:GetResourcesComponent, canActivate:[ResourcesGuard]},
+      ]},
       { path: 'paymentHistory', component: PaymentHistoryComponent },
       { path: 'payment', component: MakePaymentComponent },
-      { path: '**', component: NotFoundComponent },
+      { path: '**', component: NotFoundComponent},
     ],
   },
 ];

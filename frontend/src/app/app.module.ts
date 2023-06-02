@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
+// import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 import { Angular4PaystackModule } from 'angular4-paystack';
 
@@ -39,6 +39,7 @@ import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { OwnerPaymentHistoryComponent } from './owner-payment-history/owner-payment-history.component';
 import { PaymentHistoryComponent } from './payment-history/payment-history.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { PdfViewerModule } from 'ng2-pdf-viewer';
 
 @NgModule({
   declarations: [
@@ -65,6 +66,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
     PdfViewerModule,
     NgbModule,
     FormsModule,
+    PdfViewerModule,
     // CloudinaryModule,
     // CloudinaryConfiguration,
     ReactiveFormsModule,

@@ -20,6 +20,7 @@ export class GetResourcesComponent implements OnInit {
     console.log(this.path)
     let id = this.actRoute.snapshot.params['id']
     this.course_id=(id)
+    console.log(this.course_id)
     
     this.getCourseResources();
     this.message = ''

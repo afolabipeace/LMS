@@ -12,7 +12,8 @@ export class ResourcesGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      
+      // const routeId = route.params
+      // console.log(route.params)
       this.userService.getAllCourses().subscribe((data:any) => {
         let findCourse = data.find((each:any) => each.course_id == route.params['id'] );
         if (!findCourse) {
@@ -23,8 +24,10 @@ export class ResourcesGuard implements CanActivate {
           if (findCourse.status == 'paid' && findCourse.paid == false && findCourse.user_id != user){
             this.router.navigate(['/allcourse'])
           }
+            // return false;
         }
       })
+      // console.log("hi");
     return true;
   }
   
