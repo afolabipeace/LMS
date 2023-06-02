@@ -37,7 +37,7 @@
             $statement= $this->connectDb->prepare($query);
             $statement->bind_param(...$binder);
             if($statement->execute()){
-                $this->res['id'] = $this->connectDb->insert_id;
+                // $this->res['id'] = $this->connectDb->insert_id;
                 $this->res['success'] = true;
                 return $this->res;
             }else{
@@ -47,9 +47,7 @@
 
         public function read ($query, $binder) {
             $statement = $this->connectDb->prepare($query);
-            if($binder){
-                $statement->bind_param(...$binder);
-            }
+            $statement->bind_param(...$binder);
             if ($statement->execute()) {
                $fetch = $statement->get_result();
                $this->res['true'] = true;
@@ -71,6 +69,18 @@
                return false;
             }   
         }
+
+        // public function multiInsert($query, $items, $binder){
+        //     $statement = $this->connectDb->prepare($query);
+        //     $check = false;
+        //     foreach ($items as $item) {
+        //         $statement->bind_param($binder, ...$item);
+        //         if($statement->execute()){
+        //             $check = true;
+        //         }
+        //     }
+        //     return $check;            
+        // }
 
         public function update () {
 

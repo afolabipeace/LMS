@@ -6,41 +6,30 @@
 
     $user = new Users;
     $insert = $user->getAllCourses();
+    // echo json_encode($insert) ;
     $response = [];
-  
+    $courseArray = [];
+    $user_id = $user->get()['fetched']['user_id'];
     if ($insert) {
-        $getCourses = $insert['fetched']->fetch_all(MYSQLI_ASSOC);
-        // while ($obj = $getCourses) {
-        //     $courses[] = $obj;
-        // }
-        echo json_encode($getCourses);
-    } else {
+        $getCourses = $insert['fetched'];
+    // echo $getCourses;
+        while ($course = $getCourses->fetch_assoc()) {
+            $course_id = $course['course_id'];
+            $course['owner_id'] = $course['user_id'];
+            // echo $course_id;
+            $check = $user->getUserPayment($course_id,$user_id);
+            if($check['fetched']->num_rows > 0){
+                $course['paid'] = true;
+            }
+            else{
+                $course['paid'] = false;
+            }
+            $courseArray[] = $course;
+        }
+        echo json_encode($courseArray);
+    }
+     else {
         $response["success"] = false;
         echo json_encode($response);
     }
-
-      // if ($insert) {
-    //     $getAll = $insert['fetched']->fetch_all(MYSQLI_ASSOC);
-    //     echo json_encode($getAll);
-    // } else {
-    //     $response['success'] = false;
-    //     echo json_encode($response);
-    // }  
-
-
-    // if ($insert) {
-    //     if ($user->res['fetched']->num_rows > 0) {
-    //         $getAll = $user->res['fetched'];
-    //         while ($obj = $getAll->fetch_assoc()) {
-    //             $courses[] = $obj;
-    //         }
-    //         echo json_encode($courses);
-    //     } else {
-    //         $response['gotten'] = false;
-    //         echo json_encode($response);
-    //     }
-    // } else {
-    //     $response['success'] = false;
-    //     echo json_encode($response);
-    // }  
 ?>

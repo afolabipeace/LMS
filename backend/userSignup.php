@@ -7,9 +7,10 @@
     $address = $_POST->address;
     $password = $_POST->password;
     $email = $_POST->email;
+    $pass = password_hash($password, PASSWORD_DEFAULT);
 
     $user = new Users;
-    $insert = $user->signUpUser($first_name, $last_name, $phone_no, $address, $password, $email);
+    $insert = $user->signUpUser($first_name, $last_name, $phone_no, $address, $pass, $email);
     $resp =[];
     if($insert){
         $resp['success'] = true;

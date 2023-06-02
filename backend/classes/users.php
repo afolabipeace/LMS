@@ -16,17 +16,15 @@
             $binder = null;
             return $this->Read($query, $binder);
         }
-        public function signUpUser ($first_name,$last_name, $phone_no, $address, $password, $email){
+        public function signUpUser ($first_name,$last_name, $phone_no, $address, $pass, $email){
             $query = "INSERT INTO users (first_name,last_name, phone_no, `address`, `password`, email) VALUES (?, ?, ?, ?, ?, ?)";
-            $binder = array ('ssssss', $first_name, $last_name, $phone_no, $address, $password, $email);
-            // $query2 = "INSERT INTO cart (`user_id`) VALUE (?)";
-            // $binder2 = array ('s', $user_id);
+            $binder = array ('ssssss', $first_name, $last_name, $phone_no, $address, $pass, $email);
             return $this->create($query, $binder);
         }
 
-        public function signInUser($email,$password){
-            $query = "SELECT * FROM users WHERE `email` = ? AND `password` = ?";
-            $binder = array('ss', $email,$password);
+        public function signInUser($email){
+            $query = "SELECT * FROM users WHERE `email` = ? ";
+            $binder = array('s', $email);
             return $this->read($query,$binder);
             // $user = $this->read($query,$binder)
             // ->fetch_assoc();
@@ -39,12 +37,6 @@
             // }
             // return $res;
         }
-
-        // public function signInUser ($email,$password){
-        //     $query = "SELECT * FROM users";
-        //     $binder = null;
-        //     return $this->read($query, $binder);
-        // }
 
         public function get (){
             $allheaders = getallheaders();
@@ -82,7 +74,6 @@
         }
 
         public function createResources($type,$newName, $name,$course_id){
-                // "SELECT * FROM courses  || 
             $query = "INSERT INTO resources (`type`,`file`,`name`, `course_id`) VALUES (?,?,?,?)";
             $binder = array('ssss', $type,$newName,$name, $course_id);
             return $this->create($query,$binder);
@@ -94,19 +85,23 @@
             return $this->create($query,$binder);
         }
 
+        // public function savePayment($user_id, $course_id,$amount,$date){
+        //     $query ="INSERT INTO payment (user_id,`course_id`,`amount`,`date`) VALUES (?,?,?,?)";
+        //     $binder = array ('ssss', $user_id, $course_id, $amount, $date);
+        //     return $this->create($query,$binder);
+        // }
+
+        public function savePayment($user_id, $course_id,$amount,$reference){
+            $query ="INSERT INTO payment (user_id,`course_id`,`amount`,`reference`) VALUES (?,?,?,?) ";
+            $binder = array ('ssss', $user_id, $course_id, $amount, $reference);
+            return $this->create($query,$binder);
+        }
+     
+
         public function getCourses($user_id){
             $query = "SELECT * FROM courses WHERE user_id = ?";
             $binder = array('s',$user_id);
-            return $this->read($query,$binder) ;
-            // $course= $this->read($query,$binder)->fetch_assoc();
-            // $res=[];
-            // if($course){
-            //     $res['true']=true;
-            //     $res['fetched']=$course;
-            // }else{
-            //     $res['true']=false;
-            // }
-            // return ($res);
+            return $this->read($query,$binder) ;;
         }
 
         public function getResources($course_id){
@@ -117,19 +112,33 @@
 
         public function getAllCourses(){
             $query = "SELECT * FROM courses JOIN users USING (user_id)";
-            $binder = null;
-            return $this->read($query,$binder);
+            // $binder = null;
+            return $this->readAll($query);
         }
-
-        // public function getCourseId(){
-        //     $query = "SELECT * FROM courses JOIN resources USING (course_id)";
-        //     $binder = null;
-        //     return $this->read($query,$binder);
-        // }
 
         public function selectAll() {
             $query = "SELECT * FROM courses";
             return $this->readAll($query);
         }
+
+        public function getUserPayment($course_id,$user_id){
+            $query = "SELECT * FROM payment WHERE course_id = ? AND user_id = ?";
+            $binder = array('ss', $course_id, $user_id);
+            return $this->read($query, $binder);
+        }  
+
+        public function getOwnerPaymentHistory ($course_id){
+            $query = 'SELECT * FROM payment JOIN users USING (user_id) WHERE course_id = ?';
+            $binder = array('s', $course_id);
+            return $this->read($query,$binder);
+            // WHERE course_id = ? JOIN users USING (user_id)'
+        }
+
+        public function getPaymentHistory($user_id){
+            $query = "SELECT * FROM payment JOIN users USING (user_id) JOIN courses USING (course_id) WHERE users.user_id = ?";
+            $binder = array('s',$user_id);
+            return $this->read($query,$binder) ;;
+        }
     }
+
 ?>
