@@ -23,7 +23,6 @@ export class PaymentHistoryComponent implements OnInit {
           this.payment = info
         }
         localStorage.setItem('payment', JSON.stringify(this.payment));
-        console.log(this.payment)
     })
 }
 

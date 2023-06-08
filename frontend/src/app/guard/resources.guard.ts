@@ -20,7 +20,6 @@ export class ResourcesGuard implements CanActivate {
            this.router.navigate(['/allcourse'])
         }else {
           let user = JSON.parse(localStorage.getItem("current_user")!)
-         console.log(user)
           if (findCourse.status == 'paid' && findCourse.paid == false && findCourse.user_id != user){
             this.router.navigate(['/allcourse'])
           }

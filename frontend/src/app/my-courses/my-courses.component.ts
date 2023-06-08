@@ -42,14 +42,12 @@ export class MyCoursesComponent implements OnInit {
     form.append("desc", desc ?? "");
     form.append("status", status ?? "");
     form.append("amount", amount ?? "");
-    this.userService.createCourses(form).subscribe(response => { 
-      console.log(response);
+    this.userService.createCourses(form).subscribe(response => {
       if (response.success == true) {
         this.snackbar.openFromComponent(SnackBarComponent, {
           data: {message: "Course sucessfully Created"},
           duration: 3000
         })
-          console.log(status)
         this.userForm.controls['title'].setValue("");
         this.userForm.controls['desc'].setValue("");
         this.userForm.controls['status'].setValue("");

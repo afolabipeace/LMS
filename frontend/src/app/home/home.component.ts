@@ -35,7 +35,6 @@ export class HomeComponent implements OnInit {
     // this.course_id = this.actRoute.snapshot.params['course_id'];
     this.reference = `ref-${Math.ceil(Math.random() * 10e13)}`;
     this.getCourses();
-    console.log(this.course_id)
   }
 
   getCourses() {
@@ -43,18 +42,14 @@ export class HomeComponent implements OnInit {
         console.log(data.user_id)
         this.userService.getCourses(data.user_id).subscribe(info => {
           this.courses = info
-          console.log(this.courses)
           // console.log(this.courses.title)
         })
-      console.log(data)
       // this.detailsOfUser = this.userService;
       })
   }
 
   paymentHistory(course_id:any){
-    console.log(course_id)
     this.userService.getOwnerPaymentHistory(course_id).subscribe(data => {
-      console.log(data, "data");
       if (data.message != "No Payment History") {
         this.seen = true;
         this.courseArray = data;

@@ -17,10 +17,8 @@ export class GetResourcesComponent implements OnInit {
   public seen = false;
   public path = environment.fileUrl;
   ngOnInit(): void {
-    console.log(this.path)
     let id = this.actRoute.snapshot.params['id']
     this.course_id=(id)
-    console.log(this.course_id)
     
     this.getCourseResources();
     this.message = ''
@@ -28,14 +26,12 @@ export class GetResourcesComponent implements OnInit {
 
   getCourseResources() {
       this.userService.getResources(this.course_id).subscribe(data => {
-      console.log(data)
       if(data.message){
         this.message =`No Resources Created CLICK TO Add Resources`
       }else{
         this.resources = data
       }
       localStorage.setItem('data', JSON.stringify(this.resources));
-      console.log(this.resources)
 
       
       // if (data.message != 'no Resources Created') {

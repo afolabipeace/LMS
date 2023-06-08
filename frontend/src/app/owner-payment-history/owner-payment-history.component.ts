@@ -17,20 +17,17 @@ export class OwnerPaymentHistoryComponent implements OnInit {
   ngOnInit(): void {
     let id = this.actRoute.snapshot.params['id']
     this.course_id=(id)
-    console.log(this.course_id)
     this.OwnerPaymentResources();
   }
 
   OwnerPaymentResources(){
     this.userService.getOwnerPaymentHistory(this.course_id).subscribe(data => {
-      console.log(data)
       if(data.message){
         this.message =`No Payment History CLICK TO GO BACK TO COURSE`
       }else{
         this.history = data
       }
       localStorage.setItem('payment', JSON.stringify(this.history));
-      console.log(this.history)
     })
 
 

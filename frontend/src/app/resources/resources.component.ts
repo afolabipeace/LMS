@@ -31,12 +31,10 @@ export class ResourcesComponent implements OnInit {
 
   ngOnInit(): void {
     let id = this.actRoute.snapshot.params['id']
-    console.log(id)
     this.userService.userDetails.subscribe(data => {
       this.studentArray = data;
       this.userService.getCourses(data.user_id).subscribe(info => {
         this.studentArray = info
-        console.log(this.studentArray)
       })
     })
     this.course_id = (id)
@@ -48,10 +46,6 @@ export class ResourcesComponent implements OnInit {
 
   createResources(){
     // alert('nuinbib')
-    console.log(this.file);
-    console.log(this.name);
-    console.log(this.type);
-    console.log(this.course_id);
     // let {type,name, file} = this.userForm.value;
     if (this.type == "") {
       this.incorrect = "Pls provide the neccessary details!!!."
@@ -76,9 +70,6 @@ export class ResourcesComponent implements OnInit {
         //     // Here you can handle the Cloudinary response and perform any necessary actions
         //   }
         // });
-        
-        console.log('entered')
-        console.log(data);
         if (data.success == true) {
           this.snackbar.openFromComponent(SnackBarComponent, {
             data: { message: "Resources sucessfully Created" },

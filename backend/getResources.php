@@ -2,7 +2,6 @@
     require "classes/users.php";
     $_POST = json_decode(file_get_contents("php://input"));
     $course_id = $_POST->course_id;
-    // echo json_encode($course_id);
     $user = new Users;
     $insert = $user->getResources($course_id);
     

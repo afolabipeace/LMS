@@ -7,7 +7,6 @@
 
     $_POST = json_decode(file_get_contents("php://input"));
 
-    // $user_id = $_POST->user_id;
     $user = new Users;
     $user_id = $user->get()['fetched']['user_id'];
     $insert = $user->getPaymentHistory($user_id);

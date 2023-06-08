@@ -36,15 +36,12 @@ export class AllCoursesComponent implements OnInit {
     form.append("course_id", course.course_id);
     form.append("amount", course.amount);
     form.append("reference", course.reference);
-    console.log(course.amount)
     const data = {
       'course_id': course.course_id,
       'amount': course.amount,
       'reference': course.reference
     }
-    console.log(data)
     this.userService.savePayment(form).subscribe(data=>{
-      console.log(data)
     })
      
   }
@@ -56,11 +53,9 @@ export class AllCoursesComponent implements OnInit {
 
   ngOnInit(): void {
     this.reference = `ref-${ Math.floor(Math.random() * 19e10)}`;
-    console.log(this.reference)
     // this.getAllCourses();
     this.userService.getAllCourses().subscribe(info => {
       this.courseArray = info;
-      console.log(this.courseArray)
       this.courseArray.map((c:any)=>{
         // generatingauniquereferencenumberforeachcourse
         let d = new Date();
@@ -69,12 +64,9 @@ export class AllCoursesComponent implements OnInit {
     })
 
     this.userService.userDetails.subscribe(data => {
-      console.log(data.user_id)
       this.user_id = data.user_id
-      console.log(this.user_id)
       localStorage.setItem('current_user',JSON.stringify(this.user_id))
       // gettingallcourses
-      console.log(data)
     })
   }
 

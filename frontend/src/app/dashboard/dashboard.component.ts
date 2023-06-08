@@ -31,12 +31,9 @@ export class DashboardComponent implements OnInit{
 
   getCourses() {
     this.userService.userDetails.subscribe(data=>{
-      console.log(data.user_id)
       this.userService.getCourses(data.user_id).subscribe(info => {
         this.courses = info
-        console.log(this.courses)
       })
-    console.log(data)
     // this.detailsOfUser = this.userService;
     })
 }

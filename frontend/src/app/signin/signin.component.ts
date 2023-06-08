@@ -42,7 +42,6 @@ export class SigninComponent implements OnInit {
             duration: 3000
           })
           localStorage.setItem('token', data.token);
-          console.log(data.token)
           this.router.navigate(["/dashboard"]);
         } else {
           this.incorrect = data.message;

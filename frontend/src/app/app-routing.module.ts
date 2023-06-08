@@ -11,7 +11,7 @@ import { ResourcesComponent } from './resources/resources.component';
 import { SideNavComponent } from './side-nav/side-nav.component';
 import { SigninComponent } from './signin/signin.component';
 import { SignupComponent } from './signup/signup.component';
-import { MakePaymentComponent } from './make-payment/make-payment.component';
+// import { MakePaymentComponent } from './make-payment/make-payment.component';
 import { OwnerPaymentHistoryComponent } from './owner-payment-history/owner-payment-history.component';
 import { PaymentHistoryComponent } from './payment-history/payment-history.component';
 // import { ResourcesGuardGuard } from './resources-guard.guard';
@@ -23,6 +23,7 @@ const routes: Routes = [
   { path: 'signup', component: SignupComponent },
   { path: 'signin', component: SigninComponent },
   {
+    
     path: '', canActivate: [UserGuard], component: SideNavComponent, children: [
       { path: 'dashboard', component: DashboardComponent, canActivate: [UserGuard], },
       { path: 'createCourses', component: MyCoursesComponent, canActivate: [UserGuard], },
@@ -40,7 +41,7 @@ const routes: Routes = [
           { path: 'getResources/:id', component:GetResourcesComponent, canActivate:[ResourcesGuard]},
       ]},
       { path: 'paymentHistory', component: PaymentHistoryComponent },
-      { path: 'payment', component: MakePaymentComponent },
+      // { path: 'payment', component: MakePaymentComponent },
       { path: '**', component: NotFoundComponent},
     ],
   },

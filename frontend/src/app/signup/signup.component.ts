@@ -49,7 +49,6 @@ export class SignupComponent implements OnInit {
     } else {
       this.userService.signupUsers(userObj).subscribe(data => {
         this.progressBar = true;
-        console.log(data)
         if (data.email == userObj['email']) {
           this.snackbar.openFromComponent(SnackBarComponent, {
             data: { message: "Email Already Exist" },
